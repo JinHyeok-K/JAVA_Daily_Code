@@ -157,7 +157,7 @@ public class Day05_04_도서대여프로그램 { // c.s
 				boolean logincheck = false;
 				for(int i=0;i<회원.length;i++){ // 회원 ID 길이만큼 반복 수행 | pw check
 					
-					if( 회원[i][0] !=null && 회원[i][0].equals(id) &&	 // null 이 아니다 = 회원이 있다. 
+					if(  회원[i][0] !=null &&회원[i][0].equals(id) &&	 // null 이 아니다 = 회원이 있다. 
 							회원[i][1].equals(password)) {
 						System.err.println(" 알림)) 로그인 성공");
 						logincheck = true; // 로그인 성공 값 저장
