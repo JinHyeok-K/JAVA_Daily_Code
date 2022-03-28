@@ -1,4 +1,4 @@
-package Day15.설계순서_1;
+package Day15;
 
 import java.util.Scanner;
 
