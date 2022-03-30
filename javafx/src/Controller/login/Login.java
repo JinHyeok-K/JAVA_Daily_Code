@@ -1,4 +1,4 @@
-package Controller;
+package Controller.login;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.util.Duration;
 
 public class Login implements Initializable{
 	
@@ -43,11 +44,16 @@ public class Login implements Initializable{
 			// 3. 미디어 뷰에 미디어 플레이어 넣기
 			mediaview.setMediaPlayer(mediaPlayer);
 			// 4. 미디어플레이어 시작
-			mediaPlayer.play();
+//			mediaPlayer.play();
 			
-			
-			
-			loadpage("/View/loginpane.fxml");
+			mediaPlayer.setOnEndOfMedia(new Runnable() {
+	            @Override
+	            public void run() {
+	            	mediaPlayer.seek(Duration.ZERO);
+	            }
+	        }); 
+			mediaPlayer.play();		
+			loadpage("/View/login/loginpane.fxml");
 			
 		
 	}

@@ -3,6 +3,7 @@ package Controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Controller.login.Login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,7 +34,7 @@ public class Findid implements Initializable{
     @FXML
     void back(ActionEvent event) {
     	System.out.println("아디찾기에서 뒤로가기");
-    	Login.instance.loadpage("/View/loginpane.fxml");
+    	Login.instance.loadpage("/View/login/loginpane.fxml");
     }
 
     @FXML

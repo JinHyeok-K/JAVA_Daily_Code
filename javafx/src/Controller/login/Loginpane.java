@@ -1,4 +1,4 @@
-package Controller;
+package Controller.login;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -58,7 +58,16 @@ public class Loginpane implements Initializable{
 
     @FXML
     void acclogin(ActionEvent event) {
-    	System.out.println("로긴로긴");
+//    	System.out.println("로긴로긴");
+    	System.out.println(txtid.getText()+"에 아이디로 입려쿠");
+    	System.out.println(txtpassword.getText()+"에 패스와브 입려쿠");
+    	String id = txtid.getText();
+    	String password =txtpassword.getText();
+    	if(id.equals("admin")&&password.equals("1234")) {
+    		lblconfirm.setText("우왕앙ㅇ");
+    	}
+    	else {lblconfirm.setText("ㅇㅁㄹㅇㅁㄹㅇ");}
+    	
     }
 
     @FXML
