@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form>	<!-- 입력 틀 (양식)  -->
+		<h2> 회원 가입 </h2>
+		<p>
+			
+		아이디 		 <input type = "text" autofocus="autofocus"> <br>
+		이름 			 <input type ="text" > <br>
+		비밀번호 		 <input type="password"> <br>
+		비밀번호확인 	 <input type="password"> <br>
+		이메일		 <input type="text" >@ 
+				<select>
+						<option> 직접입력 </option>
+						<option> naver.com </option>
+						<option> nate.com </option>
+				  </select> <br>
+		전화번호 		 <input type="password" placeholder="010-123-4567" > <br>
+		
+		
+		문자 수신 여부  <input type="radio" name="email" checked="checked">  예 
+					  <input type="radio" name="email">  아니오<br> 
+		가입 경로		  <input type="checkbox" name="item1"> 친구소개 
+					  <input type="checkbox" name="item2" > 인터넷검색 
+					  <input type="checkbox" name="item3"> 블로그 
+					  <input type="checkbox" name="item4"> 기타 <br> 
+		<input type="button" value="회원가입"><br>
+		</p>
+		
+		<h2> 답변 글 쓰기 </h2>
+		<p>
+			
+		이름 			 <input type ="text" value="홍길동" readonly="readonly" > <br>
+		제목			 <input type ="text" value="RE:"><br>
+		내용			 <textarea rows="10" cols="100"></textarea> <br>
+		<input type="button" value="전송"><br>		 </p>
+	</form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+			
+	
+
+		<style type="text/css">
+			/*     CSS 주석처리	*/
+			/* 웹 폰트 */
+			@font-face {
+		    font-family: 'HSYuji-Regular';
+		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
+			@font-face {
+		    font-family: '양진체';
+		    src: url('https://cdn.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
+			
+			
+			
+			/* 선택자 { 속성명 }  */
+			*{font-family: "궁서"; 			/*	: 폰트 */ 
+				color: blue;}				/*	: 색상 */
+			
+			h3{ /* h3 태그를 선택해서 꾸미기 */
+				font-family: HSYuji-Regular; /*	: 폰트 */
+				text-decoration: overline line-through underline;
+								/*: 윗줄*/ /*: 취소선*/	/*: 밑줄*/
+				text-align:center;		  /*: 폰트 정렬 */
+				text-shadow: 3px 3px 5px orange;
+						/*:  x축	  y축 깊이   색상	*/
+			}			
+			p{ /* p 태그를 선택해서 꾸미기 */
+			
+				font-family: 양진체;
+				background-color: yellow; /* 배경색 */
+				line-height: 200%;  /* 줄 간격[기본값 : 100% ] */
+				font-size:  40 ; /* 폰트 크기 */
+				font-style:  itailic; /* 폰트 기울기 */
+				font-weight: bold; /* 폰트 굵게 */
+				
+				letter-spacing: 10px; /* 글자 간격 [ 자간 ] */
+				word-spacing: 10px; /* 단어 간격 [ 어간 ] */
+			}
+		
+			a{ /* a태그 선택해서 꾸미기 */
+				text-decoration: none; /* 밑줄 제거 */
+				color : black;
+				
+			}
+			a:hover{  /* a태그에 마우스를 올렸을 때 */
+				color : orange;
+			
+			}
+			a:visited { /* a태그에 클릭한 기록이 있으면 */
+				color : blue;
+			}
+			a:active {	/* a태그 클릭했을 때 */
+				color : green;
+			}
+		
+		</style>
+
+</head>
+<body>
+	
+	<!-- 
+		선택자 { 속성명 = 값 }
+			1. font-family 	: 글꼴
+			2. color		: 글색상
+			3. text-decoration
+				overline		: 윗줄
+				underline		: 밑줄
+				line-through	: 취소선
+			4. text-align 	:텍스트 정렬
+				center			: 가운데 정렬
+				left 			: 왼쪽 정렬
+				right:			: 오른쪽 정렬
+			5. text-shadow : x축 y축 깊이 색상 		: 글꼴 그림자
+			6. line-height : 줄 간격
+			7. letter-spacing : 자간
+			8. word-spacing : 어간
+			9. font-size : 글자 크기
+			10. font-style : italic [글자 기울기]
+			11. font-weight: bold	[글자 굵게] 
+			12. a태그 이벤트 선택자
+				a:hover  /* a태그에 마우스를 올렸을 때 */
+				a:active  /* a태그에 클릭했을 때 */
+				a:visited  /* a태그에 클릭한 기록이 있으면 */
+						
+			
+			
+	 -->
+	
+	
+	<h3> RF바퀴지터 - 웹폰트</h3>
+	<p> RF바퀴지터는 할배라서 사람들이 잘 안함 손은 편함 <br>
+	노잼임 킹탈에 최강자임.</p>
+	
+	<p> 초반엔 낙인으로 시작함 </p>
+	
+	<a href="http://www.naver.com" >네이버</a>
+	<a href="http://google.com" >구글</a>
+	
+</body>
+</html>
