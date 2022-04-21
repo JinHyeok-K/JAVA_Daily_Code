@@ -83,7 +83,7 @@ public class Productadd implements Initializable {
     		if( opt2.isSelected() ) { pcategory ="여성의류";}
     		if( opt3.isSelected() ) { pcategory ="게임기기";}
     		if( opt4.isSelected() ) { pcategory ="생활용품";}
-    	int mnum = Login.member.getMnum();
+    	int mnum = Login.member.getMnum(); 
     	// 2. 객체화
     	Product product = new Product(0, pname, pimage, pcontent, pcategory, pprice, 1, null, mnum);
     	// 3. DB처리

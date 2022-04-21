@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+	<style type="text/css">
+	
+		*{
+			text-align: center; 
+			border: solid 1px red; 
+			margin: 0 auto;
+			
+		}
+		
+		#hd_btm{
+			width: 1280px; margin: 0 auto;
+			background-color: #eeeeee;
+			
+		}
+		#hd_logo{
+			width: 280px; height: 50px;
+			float: left; /* 이전 박스권에 이어서 나열하기 */
+		}
+		#menu-main{
+			width: 750px; height: 50px;
+			float: left; /* 이전 박스권에 이어서 나열하기 */
+		}
+		#hd_search{ 
+			width: 220px; height: 50px;
+			float: left; /* 이전 박스권에 이어서 나열하기 */
+			
+		}
+		
+		#main_view1{
+			clear: both;
+			width:  600;  height:400px; 
+			background-color: skyblue; 
+			float:left;
+			
+		}
+	 	
+	 	#main_view2{
+			clear: both;
+			width:  600;  height:400px; 
+			background-color: red; 
+			float:left;
+			
+		}
+	
+	 	#main_sub2{
+	 		clear: both;
+	 	}
+	 	#puter{
+	 		clear:both;
+	 	}
+	 	.box1{
+			width: 1800px;	height: 350px;
+			background-color: yellow;
+			float: left;
+		}
+	 	.box2{
+			width: 600px;	height: 350px;
+			background-color: gray;
+			float: left;
+		}
+	 	
+	 	
+	</style>
+</head>
+<body>
+
+		<div id="hd_btm"> 
+			<div id="hd_logo">로고</div>
+			<div id="menu-main">메뉴</div>
+			<div id="hd_search">검색창</div>
+		</div>
+		
+		<div> 
+			
+			<div id= "main_view1"> 본문1 
+				<div > 본문1 서브1 이미지
+					<div class="box1"> 본문1 서브1-1 이미지 내 메뉴 (span)</div>
+				</div>
+			</div>
+		
+			
+			<div id= "main_view2"> 본문2 
+				<div> 본문2 서브1 버튼메뉴 </div>
+				<div id= "main_sub2"> 
+					<div class="box2"> 좌측 이미지 1</div>
+					<div class="box2"> 중앙 이미지 2</div>
+					<div class="box2"> 우측 이미지 3</div>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+		<div id="puter"> 
+			<div> 푸터1</div>
+			<div> 푸터2</div>
+			<div> 푸터3</div>
+			
+		</div>
+</body>
+</html>

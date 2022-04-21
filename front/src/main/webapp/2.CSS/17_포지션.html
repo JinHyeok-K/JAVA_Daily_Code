@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+	<style type="text/css">
+		#a, #b, #c, #d, #e, #f, #g, #h, #i, #g2, #h2, #i2{
+			width:100px; height: 60px;
+			background-color: yellow; border: solid 1px red;
+		}
+		#b{position:relative; left:50px; 	top: 30px;	}
+			/* 상대 위치 : 현 div 시작점 기준 */
+		#e{ position: absolute; left:50px; top:30px; }
+		#parent{
+			width: 350px; height: 200px;
+			border: solid 1px red;
+			position : relative; left: 50px; top:60px;
+		}
+		#h {position :absolute; left: 30px; top: 40px;}
+		
+		#parent{
+			width: 350px; height: 200px;
+			border: solid 1px red;
+			position : absolute; left: 200px; top:60px;
+		}
+		#h2{position: absolute; left:30px; top:40px; }	
+		#k{ position: fixed; top:30px; right: 50px;}
+		
+		
+		
+		
+			
+	</style> 
+
+</head>
+<body>
+	
+	<!-- 
+	
+		position : relative
+		position : absolute 
+		position : fixed [ 위치 고정 ]
+	
+	 -->
+
+		
+	<h3> 상대 위치 지정</h3>
+		<div id="a">요소 A</div>
+		<div id="b">요소 B</div>
+		<div id="c">요소 C</div>
+		
+	<h3> 절대 위치 지정</h3>
+		<div id="d">요소 D</div>
+		<div id="e">요소 E</div>
+		<div id="f">요소 F</div>
+	<h3> 부모: 상대위치(relative) 일 경우 절대 위치</h3>
+	<div id="parent">
+		<div id="g">요소 G</div>
+		<div id="h">요소 H</div>
+		<div id="i">요소 I</div>
+	</div>
+	<h3> 부모: 절대위치(relative) 일 경우 절대 위치</h3>
+	<div id="parent2">
+		<div id="g2">요소 G2</div>
+		<div id="h2">요소 H2</div>
+		<div id="i2">요소 I2</div>
+		<div id="k"> 위치 고정 </div>
+	</div>	
+	
+	
+	
+</body>
+</html>
