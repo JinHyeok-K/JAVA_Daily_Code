@@ -1,0 +1,89 @@
+@charset "EUC-KR";
+
+*{
+	font-family: "Nanum Gothic";
+	
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+a:hover{
+	color: #eeeeee;
+}
+
+.tophead{ /* 상단 메뉴 */
+	font-size: 12px; 
+	margin-left: 20px;
+}
+
+.sidemenu{ /*사이드 바*/
+	position:fixed; /*고정*/
+	left:10px;
+	margin-top:80px;
+}
+.btn{
+	height:80px;
+	
+}
+.content{ /* 본문 */
+	margin-top:80px;
+}
+
+
+.top_line{
+	border-top: solid 1px gray;
+	border:solid 2px red;
+}
+
+h4{
+	color: gray;
+	
+}
+h5{
+	color: gray;
+	
+}
+
+.foot_A{
+	font-size: 14px;
+	line-height:20px;
+}
+
+.foot_B{
+	color : gray;
+	font-size: 15px;
+}
+.foot_C{
+	color : gray;
+	font-size: 20px;
+}
+
+.foot_D{
+
+	font-size: 10px;
+	line-height:20px;
+}
+.side_info{
+	font-size: 6px;	
+	
+}
+.foot_bold{
+	
+	font-weight: bold;
+}
+
+.form-control{
+	witdh: 80px;
+	
+}
+.subtext1{
+	font-size:13px;
+	
+	
+}
+
+

@@ -25,10 +25,10 @@
 </head>
 <body>
 	<!--  헤더 -->
-	<%@include file="header.jsp"%>
+	
 	
 	<!--  헤더이미지 -->
-	<%@include file="mainimage.jsp"%>
+	
 	<!--  본문 -->
 	<div id = "contents">
 		<h4> 로그인 </h4>
@@ -46,6 +46,6 @@
 	</table>
 	</div>
 	<!--  푸터 -->
-	<%@include file="footer.jsp" %>
+	
 </body>
 </html>
