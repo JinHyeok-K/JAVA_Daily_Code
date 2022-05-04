@@ -1,6 +1,6 @@
 <%@page import="org.apache.catalina.filters.SetCharacterEncodingFilter"%>
 <%@page import="Dao.Dao"%>
-<%@page import="Dto.Member"%>
+<%@page import="dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
