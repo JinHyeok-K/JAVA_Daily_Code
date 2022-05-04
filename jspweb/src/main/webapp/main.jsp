@@ -2,16 +2,16 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<hea
-d>
+<head>
 <meta charset="UTF-8">
-
 </head>
 <body>
-	<%@include file="header.jsp" %>
+
+	<%@include file ="header.jsp" %>
 	<div class="container">
-		메인페이지		
+		메인페이지
 	</div>
-	<%@include file="footer.jsp" %>
+	<%@include file ="footer.jsp" %>
+
 </body>
 </html>

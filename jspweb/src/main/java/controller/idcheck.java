@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.MemberDao;
+import dao.MemberDao1;
 
 
-@WebServlet("/idcheck")
+@WebServlet("/idcheck2")
 public class idcheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
@@ -32,7 +32,7 @@ public class idcheck extends HttpServlet {
 		
 		// 요청할 때 request
 		
-		boolean idcheck_result = MemberDao.getMemberDao().idcheck(mid);
+		boolean idcheck_result = MemberDao1.getMemberDao().idcheck(mid);
 		
 		if(idcheck_result) {
 			response.getWriter().print(2);
