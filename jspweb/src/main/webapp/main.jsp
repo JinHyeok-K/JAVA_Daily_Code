@@ -12,6 +12,6 @@
 		메인페이지
 	</div>
 	<%@include file ="footer.jsp" %>
-
+	
 </body>
 </html>
