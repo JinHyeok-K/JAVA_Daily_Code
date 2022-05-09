@@ -31,7 +31,7 @@
 		<a href="#">악세사리</a>
 		<a href="#">BEST</a>
 		<a href="#">트레이닝</a>
-		<a href="#">도델처럼입자!</a>
+		<a href="#">모델처럼입자!</a>
 		<a href="#">50% 할인</a>
 		<input type="text"><button>검색</button>
 		<a href="#"> <img src="#">장바구니이미지 </a>

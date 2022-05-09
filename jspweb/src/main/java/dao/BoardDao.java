@@ -61,13 +61,126 @@ public class BoardDao extends Dao {
 		}catch (Exception e) {System.out.println("board dao 출력 sql 오류"+e);		}
 		return null; }
 	// 3. 개별 게시물 출력 메소드 [ 인수 : 게시물번호 ]
-	public Board getboard() { return null; }
+		public Board getboard( int bno ) { 
+			String sql ="select * from board where bno="+bno;	// 1. SQL 작성 
+			try {
+				ps = con.prepareStatement(sql);	// 2.연결된DB( con ) 에 SQL문 설정  
+				rs = ps.executeQuery(); 		// 3.조작된 SQL를 실행
+				if( rs.next() ) { // 4. 검색 결과 [ rs.next() 할 때 마다 결과물에서 레코드 1개씩 호출 ]  
+					Board board = new Board( 
+						rs.getInt(1),rs.getString(2), 
+						rs.getString(3),rs.getInt(4),
+						rs.getString(5), rs.getInt(6),
+						rs.getString(7) ,null 
+					);
+					return board;
+				}
+			}catch (Exception e) {} return null;
+			
+			
+		}
+	
+		//3-2   
+		//select board.*, member.mid from board left join member on board.mno=member.mno
+	public ArrayList<Board> getmyboard( String mid ) { 
+			
+	
+			ArrayList<Board> myboardlist = new ArrayList<Board>();
+			String sql = " select board.*, member.mid from board left join member on board.mno=member.mno where member.mid=? order by bno desc";
+			SimpleDateFormat sample_date = new SimpleDateFormat("yyyy-MM-dd");
+			Date date= new Date();  
+			
+			try {
+				
+				ps = con.prepareStatement(sql);
+				ps.setString(1, mid);
+				ps.executeQuery();
+				rs = ps.executeQuery();
+				while(rs.next()) {
+					if(rs.getString(7).split(" ")[0].equals(sample_date.format(date))){
+					Board board = new Board(
+							rs.getInt(1), rs.getString(2), 
+							rs.getString(3), rs.getInt(4), 
+							rs.getString(5), rs.getInt(6), 
+							rs.getString(7).split(" ")[1], rs.getString(8));
+					myboardlist.add(board);
+					}
+				else {
+					Board board = new Board(
+							rs.getInt(1), rs.getString(2), 
+							rs.getString(3), rs.getInt(4), 
+							rs.getString(5), rs.getInt(6), 
+							rs.getString(7).split(" ")[0], rs.getString(8));
+					myboardlist.add(board);
+					
+				}
+					
+					}
+				return myboardlist;
+			}catch (Exception e) {} 
+			return null;
+					
+		}
+			
+		
 	// 4. 게시물 수정 메소드 	[ 인수 : 수정할 게시물번호  / 수정된 내용 ]
-	public boolean update( Board board ) { return false; }
+	public boolean update( Board board ) { 
+		
+		String sql = "update board set btitle=?,bcontent=?,bfile=? where bno=?";
+		
+		try {
+			
+			
+			
+			ps=con.prepareStatement(sql);
+			ps.setString(1, board.getBtitle());
+			ps.setString(2, board.getBcontent());
+			ps.setString(3, board.getBfile());
+			ps.setInt(4, board.getBno());
+			ps.executeUpdate();
+			return true;
+		}catch(Exception e) {System.out.println("수정 실패"+e);}
+		return false;
+	}
+	
 	// 5. 게시물 삭제 메소드 	[ 인수 : 삭제할 게시물번호 
-	public boolean delete( int bno ) { return false; }
+	public boolean delete( int bno ) { 
+	
+		
+			String sql = "delete from board where bno="+bno;	
+		try {	
+			ps = con.prepareStatement(sql);
+			//ps.setInt(1, bno);
+			ps.executeUpdate(); 
+			return true;
+				
+		}catch(Exception e ) { System.out.println( "delete[SQL 오류]"+e  ); }
+		return false;
+	}
+	
+	// 5-2 첨부파일만 삭제(null 로 변경)
+	public boolean file_delete(int bno) {
+		String sql = "update board set bfile=null where bno="+bno;
+		try {
+			ps= con.prepareStatement(sql);
+			ps.executeUpdate();
+			return true;
+		}catch (Exception e) {System.out.println("첨푸파일삭제오류 : "+ e);}
+		return false;
+	}
+	
 	// 6. 게시물 조회 증가 메소드 	[ 인수 : 증가할 게시물번호 ]
-	public boolean increview( int bno ) { return false; }
+	public boolean increview( int bno ) { 
+		String sql = "update board set bview = bview+1 where bno="+bno;
+		try {
+			ps = con.prepareStatement(sql);
+			ps.executeUpdate();
+			return true;
+		}catch (Exception e) {System.out.println("조회스증가메소드 에러 :"+e);}
+		
+		return false; }
+	
+	
 	// 7. 댓글 작성 메소드 		[ 인수 : 작성된 데이터들 = dto ]
 	public boolean replywrite() { return false; }
 	// 8. 댓글 출력 메소드 		[ 인수 : x ]
