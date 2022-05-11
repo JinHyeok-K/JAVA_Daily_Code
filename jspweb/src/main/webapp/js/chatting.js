@@ -1,16 +1,3 @@
-
- // 문서 열렸을때 실행 함수 무조건 실행
- $(document).ready( function(){
-	 $('#summernote').summernote({
-    	placeholder: '내용 입력',
-    	tabsize: 2,
-   	 	minHeight : 250 , // 최소 높이
-   	 	maxHeight : null , // 최대 높이 
-   	 	lang : 'ko-KR'	// 메뉴 한글 버전 
-	  });
-});
-
-
 function gochatting(){
 	//alert("abcd")
 	let ninkname = $("#ninkname").val();
@@ -56,17 +43,17 @@ function calMethod() {
 
 
 $(function() {
-   timer = setInterval( function () { 
+   timer = setInterval( function () {
 	$.ajax({
 		url : "chat_receive",
 		cache : false,
 		success : function(data) {
-			alert(data);
-		$("#엘리먼트아이디").html(data);
+			
+		$("#chattingroom").html(data);
 
 		}
 
 	});
-  }, 500); // 밀리초 만큼 반복 실행 
+  }, 5000); // 밀리초 만큼 반복 실행 
 });
 
