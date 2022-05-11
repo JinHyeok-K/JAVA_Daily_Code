@@ -9,6 +9,9 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" >
 	<!-- 사용자정의 css -->
 	<link href="/jspweb/css/main.css" rel="stylesheet">
+	<!--  폰트 어썸 [아이콘] -->	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+	
 </head>
 <body>
 	<!--   헤더페이지[ 모든 페이지 사용되기 때문에 = 최상위에서 절대경로 ] -->
@@ -20,40 +23,74 @@
 	
 	<div class="container">
 		<!--  공통  -->
-		<a href="/jspweb/main.jsp">더A블에A이 SHOP</a>
-		<a href="#">BIG SIZE</a>
-		<a href="#">MUCLE - FIT</a>
-		<a href="#">1+1 이벤트</a>
-		<a href="#">아우터</a>
-		<a href="#">상의</a>
-		<a href="#">바지</a>
-		<a href="#">슈즈</a>
-		<a href="#">악세사리</a>
-		<a href="#">BEST</a>
-		<a href="#">트레이닝</a>
-		<a href="#">모델처럼입자!</a>
-		<a href="#">50% 할인</a>
-		<input type="text"><button>검색</button>
-		<a href="#"> <img src="#">장바구니이미지 </a>
+		<div class="py-4">	
 		
-		<!--  공통  -->
-		<a href="/jspweb/main.jsp">home</a>
-		<!--  로그인이 안된 상태  -->
-		<% if( loginid == null ){ %>
-			<a href="/jspweb/member/login.jsp">로그인</a>
-			<a href="/jspweb/member/signup.jsp">회원가입</a>
-		<%} %>
-		<!--  만약에 로그인된 상태 -->
-		<% if( loginid != null ){ %>
-			<span> <%=loginid %>님 </span>
-			<a href="logout">로그아웃</a>
+			<div class="row">
+				<div class="col-md-4">
+					<a href="/jspweb/main.jsp" class="header_logo">더A블에A이 SHOP</a>
+				</div>
+				
+				<div class="col-md-4 offset-4 d-flex justify-content-end">
+					
+					<ul class="nav">
+				
+					<!--  로그인이 안된 상태  -->
+					<% if( loginid == null ){ %>
+						<li> <a href="/jspweb/member/login.jsp" class="header_topmenu">로그인</a> </li>
+						<li> <a href="/jspweb/member/signup.jsp" class="header_topmenu">회원가입</a> </li>
+					<%} %>
+					<!--  만약에 로그인된 상태 -->
+					<% if( loginid != null ){ %>
+						<li> <span> <%=loginid %>님 </span> </li>
+						<li> <a href="logout" class="header_topmenu">로그아웃</a> </li>
+						<li> <a href="/jspweb/member/myshopping.jsp" class="header_topmenu">나의쇼핑</a> </li>
+					<%} %>
+						<li> <a href="/jspweb/board/boardlist.jsp?key=&keyword=" class="header_topmenu">자유게시판</a> </li>
+					
+					</ul>
+					
+				</div>
+				<div class="navbar navbar-expand-md navbar-light bg-white">
+				
+					<ul class="navbar-nav col-md-12 justify-content-between">
+						<li class="nav-item"><a href="#">BIG SIZE</a></li>
+						<li class="nav-item"><a href="#" style="color:#00D8FF;">MUCLE - FIT</a></li>
+						<li class="nav-item"><a href="#" style="color:#0100FF;">1+1 이벤트</a></li>
+						
+					
+						<li class="nav-item dropdown"> <!-- drowndown :드랍다우 -->
+							<a href="#" >아우터</a> <!-- data-bs-toggle="dropdown":해당태그 클릭시 드랍다운 열기 -->
+						
+							<!--  드랍 다운중입나. -->
+							<div class="dropdown-menu"> <!--dropdown-menu : 드랍다운 내용들 -->
+								<a class="dropdown-item" href="#"> 드랍다운메뉴 </a>
+								<a class="dropdown-item" href="#"> 드랍다운메뉴 </a>
+								<a class="dropdown-item" href="#"> 드랍다운메뉴 </a>
+								<a class="dropdown-item" href="#"> 드랍다운메뉴 </a>
+								<a class="dropdown-item" href="#"> 드랍다운메뉴 </a>
+								<a class="dropdown-item" href="#"> 드랍다운메뉴 </a>
+								
+							</div>
+						
+						</li>
+						<li class="nav-item"><a href="#">상의</a></li>
+						<li class="nav-item"><a href="#">바지</a></li>
+						<li class="nav-item"><a href="#">슈즈</a></li>
+						<li class="nav-item"><a href="#">악세사리</a></li>
+						<li class="nav-item"><a href="#">BEST</a></li>
+						<li class="nav-item"><a href="#">트레이닝</a></li>
+						<li class="nav-item"><a href="#" style="color:#FFBB00;">모델처럼입자!</a></li>
+						<li class="nav-item"><a href="#" style="color:#FF0000;">50% 할인</a></li>
+						<li class="nav-item"><input type="text" class="header_input" size="13"> </li>
+						<li class="nav-item"><a href="#"> <i class="fas fa-search"></i></a></li>
+						<li class="nav-item"><a href="#">장바구니<span class="shoppingbox">3</span></a></li>
+						
+					</ul>
+				</div>
+				
+			</div>
 			
-			<a href="/jspweb/member/myshopping.jsp">나의쇼핑</a>
-		<%} %>
-		
-			<a href="/jspweb/board/boardlist.jsp">자유게시판</a>
-		
-	
+		</div>
 	
 	</div>
 	<!-- 부트스트랩 js cdn -->

@@ -40,6 +40,7 @@
 			 <%=board.getBfile() %> 
 			<button  type="button" onclick="filedelete(<%=board.getBno()%>)">파일삭제</button>
 			<%}
+			
 			%>
 			<input type="file" name="bfile"> <br>
 			<input type="submit" value="등록"> <input type="reset" onclick="location.href='boardview.jsp?bno=<%=board.getBno()%>'" value="취소" >
