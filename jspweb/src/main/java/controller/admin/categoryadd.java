@@ -1,28 +1,25 @@
-package controller;
+package controller.admin;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.ChattingDAO;
-import dto.Chatting;
+import dao.ProductDao;
 
 /**
- * Servlet implementation class chat_receive
+ * Servlet implementation class category
  */
-@WebServlet("/chat_receive")
-public class chat_receive extends HttpServlet {
+@WebServlet("/admin/categoryadd")
+public class categoryadd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public chat_receive() {
+    public categoryadd() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,16 +28,12 @@ public class chat_receive extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		response.setCharacterEncoding("UTF-8");
-		ArrayList<Chatting> chattinglist = new ArrayList<Chatting>();
-		chattinglist = ChattingDAO.getChattingDAO().getchattinglist();
-		String a =chattinglist.get(0).getNickname();
-		System.out.println(chattinglist.size());
-		
-		System.out.println(a);
-		//response.getWriter().print(chatlist);
-		
+		request.setCharacterEncoding("UTF-8");
+		String cname = request.getParameter("cname");
+		boolean reuslt 
+		= ProductDao.getProductDao().csave( cname );
+		if( reuslt ) { response.getWriter().print(1);}
+		else { response.getWriter().print(2); }
 	}
 
 	/**

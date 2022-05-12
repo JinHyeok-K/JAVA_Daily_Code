@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+/* */
+/* 사이드바 설정 */
+	
+	
+	/* 기존 값 제거 */
+	*{padding: 0; margin: 0px;	} /* 기본 여백 제거 */
+	li{list-style: none;} /* 글머리 제거 */
+	
+	#sidebar{ /* 특정 태그의 id호출 */
+		background-color:#eeeeee; /*배경색*/
+		width: 200px;  /*가로 사이즈 */
+		height : 100%; /*세로 사이즈 */
+		position: fixed; /* 위치 고정 */
+			top : 0; /* 위에서 0px 만큼 떨어짐 */
+			left: -200px; /* 왼쪽에서 -200px 만큼 떨어짐 */
+	}
+	#sidebar ul{ /* 특정 태그의 id 내 포함된 ul */
+		/*
+		top : 50px;
+		left : 70px;
+		position: absolute;  상위 태그의 시작 위치 기준 
+		*/
+		position : absolute;
+		top:30px;
+		margin :20px;
+		left : 50px;
+	}
+	#sidebar li{
+		margin : 30px 0px;
+	}
+	#sidebar span{
+		background:#eeeeee;
+		position : absolute;
+		left: 200px;
+		width : 50px;
+		height :100%;
+		padding: 100% 10px 0% 20px;
+		border :none;
+		 
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
