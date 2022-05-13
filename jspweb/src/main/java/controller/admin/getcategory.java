@@ -42,9 +42,16 @@ public class getcategory extends HttpServlet {
 		PrintWriter out = response.getWriter(); // HTML 에게 전송 객체 생성
 		String html = ""; // 응답 할 문자열
 		
+		int i = 1;
 		for(Category temp : arrayList) {
 		//html +="<input type=\"radio\" name=\"cname\" value=\""+temp.getCno()+"\">"+temp.getCname()+"<br>";
-		html +="<input type=\"radio\" name=\"cno\" value=\""+temp.getCno()+"\">"+temp.getCname();
+		html +=
+		"<input type=\"radio\" name=\"cno\" value=\""+
+		temp.getCno()+"\">"+temp.getCname();
+		
+		if(i % 6==0 ) html += "<br>"; // 만약에 카테고리가 개수 6배수마다 줄바꿈처리
+		
+		i++;
 		}
 		 // java 에서 " " :  문자열 인식용
 		//			  \" : " 표시(출력)

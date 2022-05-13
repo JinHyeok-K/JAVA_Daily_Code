@@ -26,11 +26,11 @@ public class ProductDao extends Dao {
 /////////////////////////////// 카테고리 //////////////////////////	
 	// 1. 카테고리 등록 [ C ]
 	public boolean csave(String cname) {
-		
-		String sql = "insert into category (cname) values(?)";
+		String sql = "insert into category(cname)values('"+cname+"')";
+		//String sql = "insert into category (cname) values(?)";
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, cname );
+			//ps.setString(1, cname );
 			ps.executeUpdate(); 
 			return true;
 			
@@ -91,13 +91,20 @@ public class ProductDao extends Dao {
 			}
 			return productlist;
 		}catch (Exception e) {System.out.println("카테고리호출sql오류 :"+e);}
-		return null;}
+		return null;
+	}
 		
 		
 		
 	// 3. 제품 개별 호출 [ R ]
 	public Product getProduct() {return null;}
-	// 4. 제품 수정 [ U ]
+	// 4-1. 제품 수정 [ U ]
+	// 4-2 제품 상태 변경   [ U ]
+		public boolean activechange( int pno , int active  ) {
+			String sql = "update product set pactive = "+active+" where pno="+pno;
+			try { ps=con.prepareStatement(sql); ps.executeUpdate(); return true; }
+			catch (Exception e) {} return false;
+		}
 	// 5. 제품 삭제 [ D ]
 	
 /////////////////////////////// 재고 //////////////////////////

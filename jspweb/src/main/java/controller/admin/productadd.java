@@ -40,21 +40,21 @@ public class productadd extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+/*		
 		// 1. 프로젝트 폴더(개발자PC) 저장 
 		
 		// 2. 서버PC(톰캣) 폴더에 저장
-		String realpath = request.getSession().getServletContext().getRealPath("/admin/productimg");
+		//String realpath = request.getSession().getServletContext().getRealPath("/admin/productimg");
 		MultipartRequest multi = new MultipartRequest(
 				request,             // 요청 타입
-				realpath,    // 저장 폴더 위치
+				request.getSession().getServletContext().getRealPath("/admin/productimg"),    // 저장 폴더 위치
 				1024*1024*1024,					 // 파일 최대 용량
 				"UTF-8",				// 파일 인코딩 타입
 				new DefaultFileRenamePolicy() //보안 방식 =
 				//DefaultFileRenamePolicy : 파일명이 중복이명 파일명 뒤에 숫자 자동 부여 = 식별
 				);				
 		
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 		String pname= multi.getParameter("pname");
 		int pprice=Integer.parseInt(multi.getParameter("pprice"));
 		float pdiscount= Float.parseFloat(multi.getParameter("pdiscount")); 
@@ -66,8 +66,30 @@ public class productadd extends HttpServlet {
 		boolean result = ProductDao.getProductDao().psave(product);
 		if(result) {response.getWriter().print(1);}// response.sendRedirect("/jspweb/admin/dashboard.jsp");}
 		else {response.getWriter().print(2);}	 // response.sendRedirect("/jspweb/admin/dashboard.jsp");	
-		
-		
+*/		
+		// 1. 프로젝트폴더(개발자PC) 저장 (X) 	// 2. 서버PC(톰캣) 폴더에 저장 (권장)
+				MultipartRequest multi = new MultipartRequest(
+						request,			/*요청 타입 */ 
+						request.getSession().getServletContext().getRealPath("/admin/productimg") , /* 저장 폴더위치 */
+						1024*1024*1024, 	/* 파일 최대용량 = 바이트 기준 */
+						"UTF-8" ,			/* 파일 인코딩타입 */
+						new DefaultFileRenamePolicy()/* 보안 방식 = */
+						/* DefaultFileRenamePolicy : 파일명이 중복이면 파일명 뒤에 숫자 자동 부여 = 식별 */
+						);
+				String panme = multi.getParameter("pname");
+				int pprice = Integer.parseInt( multi.getParameter("pprice") );
+				float pdiscount = Float.parseFloat( multi.getParameter("pdiscount") ) ;
+				int cno = Integer.parseInt( multi.getParameter("cno") );
+				String pimg = multi.getFilesystemName("pimg"); // 첨부파일 파일명은 요청시 .getFilesystemName() 메소드 이용 
+				Product product = new Product( 0 , panme, pprice, pdiscount, 0, pimg, cno);
+				
+				boolean result =  ProductDao.getProductDao().psave(product);
+				
+				if( result ) { response.getWriter().print(1);}
+				else { response.getWriter().print(2);}
+				
+				
+				
 	}
 
 }
