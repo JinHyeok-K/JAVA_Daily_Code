@@ -11,16 +11,7 @@
 </head>
 <body>
 
-<% 
-	//		int bno = Integer.parseInt( request.getParameter("bno") );		// 게시물번호
-		//	String mid = (String)session.getAttribute("login"); 			// 세션 = 로그인된 아이디 
-			
-			// 조회수 중복방지 세션이 존재하지 않으면 
-			
-		//ArrayList<Board> boardlist = 
-		//BoardDao.getBoardDao().getboardlist(startrow,listsize,key,keyword);
-			
-	%>
+
 	<div class = "container ">
 	<h3> 제품 목록 페이지</h3>
 	
@@ -60,6 +51,15 @@
 		
 			<th> - </th> <th> - </th> <th> - </th> <th> - </th>
 			<th> - </th>
+			
+			
+			<th> 
+					<button onclick="#" class="">제품 삭제</button> 
+					<button onclick="#" class="">제품 수정</button> 
+					<button onclick="#" class="">상태 변경</button> 
+					<button onclick="#" class="">재고 변경</button> 
+				</th>
+			
 		<%	}%>	
 		</tr>
 	</table> 
