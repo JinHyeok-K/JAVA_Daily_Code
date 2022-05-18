@@ -132,3 +132,10 @@ function replyupdate( rno , bno ){ // 대댓글 쓰기 메소드
 		}
 	});
 }
+
+
+function regist(){
+	
+	alert("비속어는 사용할 수 없습니다.");
+	
+}
