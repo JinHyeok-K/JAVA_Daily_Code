@@ -1,3 +1,5 @@
+<%@page import="dao.MemberDao"%>
+<%@page import="controller.admin.productadd"%>
 <%@page import="java.util.TreeSet"%>
 <%@page import="java.util.Set"%>
 <%@page import="dto.Stock"%>
@@ -20,7 +22,6 @@
 	////////////////////////////////////// java ///////////////////////////////////////////
 		int pno =  Integer.parseInt( request.getParameter("pno") ); // 제품번호 요청
 		Product p = ProductDao.getProductDao().getproduct(pno); // 제품 호출
-		
 		ArrayList<Stock> stocks =  ProductDao.getProductDao().getStock(pno); // 해당 제품의 재고
 		
 		Set<String> sizelist  = new TreeSet<>(); // 사이즈목록 선언   = 중복제거(set컬렉션) 
@@ -72,7 +73,7 @@
 							<td>  <select id="color_select" class="form-select info_t">
 										<option value="">-[필수]옵션 선택-</option>
 									<% for( String c  : colorlist ){ %>
-										<option value=<%=c %> ><%=c %></option>
+										<option value=<%=c%>><%=c %></option>
 									<%} %>
 									</select> </td>
 						</tr>
@@ -88,12 +89,23 @@
 					
 					<div class="row my-5">
 						<div class="col-md-6"> 총 상품금액  </div>
-						<div class="col-md-6 total_price" > 54,900원(1개)  </div>
+						<div id="total_price" class="col-md-6 total_price" ></div>
 					</div>
-					<div class="row my-5">
-						<div class="col-md-4"><button class="form-control p-4" style="background-color: black; color: white;">바로 구매하기</button></div>
-						<div class="col-md-4"><button class="form-control p-4">장바구니 담기</button></div>
-						<div class="col-md-4"><button class="form-control p-4">관심상품 등록</button></div>
+					<% 
+						String mid = (String)session.getAttribute("login");
+						int mno = MemberDao.getmemberDao().getmno(mid);
+					%>
+					<div id="btnbox" class="btnbox">
+						<button id="btn1">바로 구매하기</button>
+						<button onclick="savecart(<%=mno %>)" id="btn2">장바구니 담기</button>
+						
+						<% // 만약에 로그인이 있고 관심등록이 되어있으면 
+							if( mid !=null && ProductDao.getProductDao().getplike(pno, mno ) ){
+						%>
+							<button id="btn3" onclick="saveplike('<%=mid %>')" > ♥</button>
+						<% }else{  %>
+							<button id="btn3" onclick="saveplike('<%=mid %>')" > ♡</button>
+						<% }  %>
 					</div>
 				</div>
 			</div>
@@ -104,3 +116,8 @@
 
 </body>
 </html>
+
+
+
+
+

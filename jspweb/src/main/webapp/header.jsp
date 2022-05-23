@@ -30,7 +30,7 @@
 					<a href="/jspweb/main.jsp" class="header_logo">더A블에A이 SHOP</a>
 				</div>
 				
-				<div class="col-md-4 offset-4 d-flex justify-content-end">
+				<div class="col-md-4 offset-4 d-flex justify-content-end header_topmenu">
 					
 					<ul class="nav">
 				
@@ -76,19 +76,20 @@
 								<a class="dropdown-item" href="#"> 드랍다운메뉴 </a>
 								
 							</div>
-						
 						</li>
+						
 						<li class="nav-item"><a href="#">상의</a></li>
 						<li class="nav-item"><a href="#">바지</a></li>
 						<li class="nav-item"><a href="#">슈즈</a></li>
 						<li class="nav-item"><a href="#">악세사리</a></li>
 						<li class="nav-item"><a href="#">BEST</a></li>
 						<li class="nav-item"><a href="#">트레이닝</a></li>
-						<li class="nav-item"><a href="#" style="color:#FFBB00;">모델처럼입자!</a></li>
-						<li class="nav-item"><a href="#" style="color:#FF0000;">50% 할인</a></li>
-						<li class="nav-item"><input type="text" class="header_input" size="13"> </li>
-						<li class="nav-item"><a href="#"> <i class="fas fa-search"></i></a></li>
-						<li class="nav-item"><a href="#">장바구니<span class="shoppingbox">3</span></a></li>
+						<li class="nav-item"> <a href="/jspweb/teamchatting.jsp"> 트레이닝 </a> </li>
+						<li class="nav-item"> <a href="/jspweb/teammarble.jsp" style="color: #FFBB00;"> 모델처러입자 </a> </li>
+						<li class="nav-item">
+							<input type="text" class="header_input" size="13"> 
+							<a href="#"> <i class="fas fa-search"></i></a></li>
+						<li class="nav-item"> <a href="/jspweb/product/productcart.jsp">장바구니<span class="shoppingbox">3</span></a></li>
 						
 					</ul>
 				</div>

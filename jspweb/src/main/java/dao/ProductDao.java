@@ -1,8 +1,14 @@
 package dao;
 
+import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import dto.Cart;
 import dto.Category;
+import dto.Order;
 import dto.Product;
 import dto.Stock;
 
@@ -158,12 +164,149 @@ public class ProductDao extends Dao {
 			}catch (Exception e) { System.out.println( e ); } return false;
 			
 		}
-	// 5. 제품의 재고 삭제 [ D ]
+	// 4. 제품의 재고 삭제 [ D ]
+//////////////////////////찜하기/////////////////////////////////////////
+	public int saveplike( int pno , int mno ) {
+		try {
+			// 1. 검색  	제품번호와 회원번호가 동일하면 
+			String sql = "select plikeno from plike where pno="+pno+" and mno="+mno;
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if( rs.next() ) { // 2. 만약에 존재하면 삭제처리 
+				sql = "delete from plike where plikeno = "+rs.getInt(1);
+				ps = con.prepareStatement(sql); ps.executeUpdate();
+				return 2; // 삭제 
+			}else { 	// 3. 만약에 존재하지 않으면 등록처리 
+				sql = "insert into plike( pno , mno )values( "+pno+","+mno+" ) ";
+				ps = con.prepareStatement(sql); ps.executeUpdate();
+				return 1; // 등록 
+			}
+		}catch (Exception e) { System.out.println(e); } return 3; // DB오류 
+	}
+	
+	//해당 제품 찜하기 여부 확인 메소드 
+	public boolean getplike( int pno , int mno ) {
+		String sql = "select * from plike where pno = "+pno+" and mno ="+mno;
+		try { ps = con.prepareStatement(sql); rs = ps.executeQuery();
+		if( rs.next() ) return true;
+		}catch (Exception e) { System.out.println( e );} return false;
+		}
+	//////////////////////////장바구니/////////////////////////////////////////
+	// 장바구니 등록 메소드 
+	public boolean savecart( Cart cart ) {
+		try {
+			String sql = "select cartno from cart where sno = "+cart.getSno()+" and mno = "+cart.getMno();
+			ps = con.prepareStatement(sql); rs=ps.executeQuery();
+			if( rs.next() ) { // 1. 장바구니내 동일한 제품이 존재하면 수량/가격 업데이트 처리
+				sql = "update cart set samount = samount + "+cart.getSamount()+
+								" , totalprice = totalprice + " + cart.getTotalprice() +
+						" where cartno = " + rs.getInt(1);
+				ps = con.prepareStatement(sql);	ps.executeUpdate(); return true;
+				
+			}else { // 2. 존재하지 않으면 등록
+				sql ="insert into cart( samount , totalprice , sno , mno ) values( ?,?,?,? )";
+				ps = con.prepareStatement(sql);
+				ps.setInt( 1 ,  cart.getSamount() );
+				ps.setInt( 2 ,  cart.getTotalprice() );
+				ps.setInt( 3 ,  cart.getSno() );
+				ps.setInt( 4 ,  cart.getMno() ); ps.executeUpdate(); return true;
+		}
+		}catch (Exception e) { System.out.println( e ); } return false; 
+	}
+	// 장바구니 출력 메소드 [  
+	public JSONArray getcart( int mno ) {
+		JSONArray jsonArray = new JSONArray(); // json배열 선언 
+		String sql = "select "
+		+ "	A.cartno as 장바구니번호 , "
+		+ "    A.samount as 구매수량 , "
+		+ "    A.totalprice as 총가격 , "
+		+ "    B.scolor as 색상 ,  "
+		+ "    B.ssize as 사이즈 , "
+		+ "    B.pno as 제품번호 ,	 "
+		+ "    C.pname as 제품명 , "
+		+ "    C.pimg as 제품이미지 "
+		+ "from cart A "
+		+ "join stock B "
+		+ "on A.sno = B.sno "
+		+ "join product C "
+		+ "on B.pno = C.pno "
+		+ "where A.mno ="+mno;
+	try {
+		ps = con.prepareStatement(sql);
+		rs = ps.executeQuery();
+		while( rs.next() ) {
+		// 결과내 하나씩 모든 레코드를 -> 하나씩 json객체 변환  
+			JSONObject object = new JSONObject();
+			object.put( "cartno" , rs.getInt(1) );
+			object.put( "samount" , rs.getInt(2) );
+			object.put( "totalprice" , rs.getInt(3) );
+			object.put( "scolor" , rs.getString(4) );
+			object.put( "ssize" , rs.getString(5) );
+			object.put( "pno" , rs.getInt(6) );
+			object.put( "pname" , rs.getString(7) );
+			object.put( "pimg" , rs.getString(8) );
+			// 하나씩 json객체를 json배열에 담기 
+			jsonArray.put( object );
+			}
+		return jsonArray;
+		}catch (Exception e) { System.out.println( e );}  return null; 
+	}
+	
+	// 장바구니 업데이트[수정]메소드 
+	public boolean updatecart( int cartno , int samount , int tatalprice ) {
+		String sql ="update cart set samount = "+samount+" , totalprice = "+tatalprice+" where cartno ="+cartno;
+		try { ps = con.prepareStatement(sql); ps.executeUpdate(); return true;}
+		catch (Exception e) { System.out.println( e ); } return false;
+	}
+	// 장바구니 삭제 메소드 
+	public boolean deletecart( int cartno ) {
+		String sql = "delete from cart where cartno="+cartno;
+		try { ps = con.prepareStatement(sql); ps.executeUpdate(); return true;}
+		catch (Exception e) { System.out.println( e ); } return false;
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////		주문		///////////////////////////////
+	public boolean saveoder(Order order) {
+		
+		String sql = "insert into porder(ordername,orderphone,"
+				+ " orderaddress,ordertotalpay,orderrequest,mno) values(?,?,?,?,?,?)";
+	
+		try {	 // !! - > insert 후에 자동 생성된 pk값 가져오기 
+			ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1, order.getOrdername());
+			ps.setString(2, order.getOrderphone());
+			ps.setString(3, order.getOrderaddress());
+			ps.setInt(4, order.getOrdertotalpay());
+			ps.setString(5, order.getOrderrequest());
+			ps.setInt(6, order.getMno());
+			ps.executeUpdate(); rs = ps.getGeneratedKeys();
+			if(rs.next()) {
+				int pk = rs.getInt(1);
+	//			System.out.println(rs.getInt(1));
+				// cart - > porderdetail
+				sql = "insert into porderdetail(samount, totalprice, orderno,sno)"
+						+ "select samount, totalprice, "+pk+", sno from cart where mno ="+order.getMno();
+				ps = con.prepareStatement(sql);
+				ps.executeUpdate();
+				
+				// cart - >  delete
+				sql = "delete from cart where mno = "+order.getMno();
+				ps = con.prepareStatement(sql);
+				ps.executeUpdate();
+				
+				return true;
+			}
+			
+		}catch (Exception e) { System.out.println("productDao saveroder error :"+e);}
+		
+		
+		return false;
+	}
+}
+			
 		
 	
 	
-	
-}
 
 
 
