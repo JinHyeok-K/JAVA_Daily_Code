@@ -9,7 +9,7 @@
 <body>
 
 	<ul>
-		<li><a href="myshooping.jsp">주문현황</a></li>
+		<li><a href="myshopping.jsp">주문현황</a></li>
 		<li><a href="#">주문조회</a></li>
 		<li><a href="#">관심상품</a></li>
 		<li><a href="#">포인트</a></li>
