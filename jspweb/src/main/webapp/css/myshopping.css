@@ -1,51 +1,61 @@
 
 .orderbox{
-	
-	margin : 50px 10px;
+	margin: 50px 10px;
 }
-
 .orderinfo{
-	
-	padding:20px;
-	
+	padding: 20px;
 }
-
-.orderbox span{
-	
-	font-size : 13px;
-	color : #999999;
-	
+.orderinfo span{
+	font-size: 20px;
 }
-
+.orderlink{
+	text-align: right;
+}
 .orderdetailbox{
-	padding:20px;
-	border: 1px solid #999999;
-	border-radius : 20px;
+	margin-left : 50px;
+	padding: 20px;
+	border: 1px solid gray;
+	border-radius: 20px;
 }
-
-
 .pname{
-	
-	padding:5px;
+	padding: 5px;
 	border-bottom: 1px solid #999999;
 }
 .poption{
-	
-	font-size :13px;
-	color:#999999;
-	margin-bottom:20px;
+	padding: 5px;
+	font-size: 13px;
+	color: #999999;
+	margin-bottom: 20px;
 }
-
-.orderbuttonbox{
-	padding: 0px 50px;
-}
-
 .orderbuttonbox button{
 	background-color: white;
-	border: 1px solid black;
-	padding : 5px 30px;
-	border-radius :10px;
+	border: solid 1px #999999;
+	padding: 5px 30px;
+	border-radius: 10px;
+	margin-right: 10px;
 }
+.activetitle{
+	color : #999999;
+	border-bottom: 1px solid red;
+}
+.activecontent{
+	padding-top: 10px;
+	font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

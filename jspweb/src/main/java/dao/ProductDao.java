@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.mysql.cj.xdevapi.JsonArray;
+
 import dto.Cart;
 import dto.Category;
 import dto.Order;
@@ -376,7 +378,57 @@ public class ProductDao extends Dao {
 		}
 		
 	
-	
+	public boolean cancelorder(int orderdetailno, int active) {
+		
+		
+		try {
+				String sql = " update porderdetail set orderdetailactive = "+active
+						+ " where orderdetailno = "+orderdetailno;
+				ps =con.prepareStatement(sql);
+				ps.executeUpdate();
+				return true;
+			
+		}catch (Exception e) {System.out.println("cancelorder error : "+e);		}
+		return false;
+	}
+		
+		
+	public JSONArray getchart(int type) {
+		String sql ="";
+		JSONArray ja = new JSONArray();
+		
+		if (type == 1) { // 일별 매출
+			sql ="select substring_index(orderdate, ' ', 1) as 날짜, sum(ordertotalpay) from porder group by 날짜 order by 날짜 desc";
+		}else if(type ==2){ // 카테고리 별 전체 판매량
+			sql="select sum(A.samount), d.cname from porderdetail a , stock b , product c , category d where a.sno = b.sno and b.pno = c.pno and c.cno = d.cno group by d.cname order by orderdetailno desc";
+		}	
+		
+		try {
+			
+			
+				ps =con.prepareStatement(sql);
+				rs = ps.executeQuery();
+				while(rs.next()) {
+					JSONObject jo = new JSONObject();
+					if(type==1) {
+						jo.put("date", rs.getString(1));
+						jo.put("value", rs.getInt(2));
+						ja.put(jo);
+					}else if(type==2) {
+						jo.put("value", rs.getInt(1));
+						jo.put("category", rs.getString(2));
+						ja.put(jo);
+					}
+					
+					
+				}
+				
+			return ja;
+			
+			}catch (Exception e) { System.out.println( "getchart error : "+e);		}
+		return null;
+		
+	}
 	
 }
 			

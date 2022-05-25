@@ -42,7 +42,7 @@
 					<!--  만약에 로그인된 상태 -->
 					<% if( loginid != null ){ %>
 						<li> <span> <%=loginid %>님 </span> </li>
-						<li> <a href="logout" class="header_topmenu">로그아웃</a> </li>
+						<li> <a href="/jspweb/logout" class="header_topmenu">로그아웃</a> </li>
 						<li> <a href="/jspweb/member/myshopping.jsp" class="header_topmenu">나의쇼핑</a> </li>
 						<!--  로그인 id 가 admin 이면 -->
 						<%if(loginid.equals("admin")){ %>
