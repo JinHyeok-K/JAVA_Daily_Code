@@ -69,7 +69,7 @@ function rereplyview( rno , bno , mid ){ // 대댓글 입력창 표시 메소드
 	);	
 }
 function rereplywrite( rno , bno ){ // 대댓글 쓰기 메소드 
-	let rrcontent = $("#rcontent").val();
+	let rrcontent = $("#rrcontent").val();
 	
 	$.ajax({
 		url : "rereplywrite" , 
@@ -100,7 +100,7 @@ function replydelete( rno ){
 	});
 }
 
-function replyjsupdate( rno,bno,content ){
+function replyjsupdate( rno,bno,content ){ // 댓글 수정
 //let rcontent = $("#rcontent").val();
 //function rereplywrite( rno , bno ){ // 대댓글 쓰기 메소드 
 	
@@ -110,13 +110,37 @@ function replyjsupdate( rno,bno,content ){
 				'<input id="rrcontent" class="form-control" value="'+content+'" rows=3>'+
 			'</div>'+
 			'<div class="col-md-2">'+
-			'<button class="form-control py-4 my-1" onclick="replyupdate('+rno+','+bno+')">수1정</button>'+
+			'<button class="form-control py-4 my-1" onclick="replyupdate('+rno+','+bno+')">수1111정</button>'+
 			'</div>'+
 		'</div>'
 	 	
 	);
 
 }
+
+function rereplyjsupdate( rno,bno,rindex, content ){ // 댓글 수정
+//let rcontent = $("#rcontent").val();
+//function rereplywrite( rno , bno ){ // 대댓글 쓰기 메소드 
+	
+	$("#"+rno).html(
+		'<div class="row">'+
+			'<div class="col-md-8">'+
+				'<input id="rrrcontent" class="form-control" value="'+content+'" rows=3>'+
+			'</div>'+
+			'<div class="col-md-2">'+
+			'<button class="form-control py-4 my-1" onclick="rereplyupdate('+rno+','+bno+','+rindex+')">수1정</button>'+
+			'</div>'+
+		'</div>'
+	 	
+	);
+
+}
+
+
+
+
+
+
 function replyupdate( rno , bno ){ // 대댓글 쓰기 메소드 
 	let content = $("#rrcontent").val();
 	$.ajax({
@@ -124,7 +148,7 @@ function replyupdate( rno , bno ){ // 대댓글 쓰기 메소드
 		data : { "rno" : rno , "bno" : bno  , "content" : content} ,
 		success : function( result ){
 			if( result == 1 ){
-				 alert("수정."); // 성공 메시지 알림 
+				 alert("댓글 수정 완료."); // 성공 메시지 알림 
 				 $("#rcontent").val(""); // 작성 input 공백으로 초기화 
 				 $("#replytable").load( location.href+" #replytable"); // 특정 태그 새로고침
 			}
@@ -132,6 +156,31 @@ function replyupdate( rno , bno ){ // 대댓글 쓰기 메소드
 		}
 	});
 }
+
+function rereplyupdate( rno , bno , rindex ){ // 대댓글 수정 메소드 
+	let content = $("#rrrcontent").val();
+	
+	$.ajax({
+		
+		url: "rereplyupdate",
+		data: {"rno":rno , "bno":bno, "rindex":rindex,"content":content},
+			
+		success : function(result){
+			if( result == 1 ){
+				 alert("대댓글 수정."); // 성공 메시지 알림 
+				 $("#rrrcontent").val(""); // 작성 input 공백으로 초기화 
+				 $("#replytable").load( location.href+" #replytable"); // 특정 태그 새로고침
+			}
+			else{ alert("수정실패 아빠불러와."); }
+		}
+	})
+	
+		
+		
+		
+}
+
+
 
 function regist(){
 	

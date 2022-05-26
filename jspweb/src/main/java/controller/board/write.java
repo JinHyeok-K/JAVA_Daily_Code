@@ -47,7 +47,7 @@ public class write extends HttpServlet {
 //		System.out.println("서버의 경로 찾기 : " + 
 //				request.getSession().getServletContext().getRealPath("/board/upload"));
 		
-		String uploadpath = "C:/Users/504/eclipse-workspace/SSS/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/jspweb/board/upload";
+		String uploadpath = "C:/Users/504/eclipse-workspace/SSS/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/jspweb/board/upload";
 		// 첨부파일 업로드 
 		MultipartRequest multi = new MultipartRequest(
 				request ,		// 요청방식 

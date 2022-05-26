@@ -119,7 +119,7 @@
 			</tr>
 			
 			<!-- 대댓글 출력창  -->
-			<%ArrayList<Reply> rereplylist = BoardDao.getBoardDao().rereplylist( bno , reply.getRno() );
+			<%ArrayList<Reply> rereplylist = BoardDao.getBoardDao().rereplylist( bno , reply.getRno()  );
 				for( Reply rereply : rereplylist ){%>
 				<tr>
 					<td></td>
@@ -131,11 +131,17 @@
 					<td width="80%">
 						<%=rereply.getRcontent() %> <br> 
 					<% if( mid != null && mid.equals( rereply.getMid() ) ){ %>
-						<button class="btn replybtn" onclick="rereplyupdate(<%=rereply.getRno()%>,<%=reply.getBno() %>,'<%=reply.getRcontent()%>')"> 수정 </button>
+						<button class="btn replybtn" onclick="rereplyjsupdate(<%=rereply.getRno()%>,<%=rereply.getBno() %>,<%=rereply.getRindex()%>,'<%=rereply.getRcontent()%>')"> 수정 </button>
 						<button class="btn replybtn" onclick="replydelete(<%=rereply.getRno()%>)"> 삭제 </button>
 					<%} %>
 					</td>
 				</tr>
+			
+			<tr> <!-- 대댓글 수정창 -->
+				<td> </td>
+				<td colspan="2" id=<%=rereply.getRno() %> > </td>   <!-- 해당 태그의 id값을 변수로 설정 = 댓글번호 ( 댓글 한개당 1개씩 ) -->
+			</tr>
+				
 				
 			<%  }  } %>
 		</table>

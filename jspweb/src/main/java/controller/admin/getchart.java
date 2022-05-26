@@ -32,17 +32,21 @@ public class getchart extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("차트인");
-		int type = Integer.parseInt(request.getParameter("type"));
-
-		JSONArray jsonArray = 
-				ProductDao.getProductDao().getchart(type);
+		
+		int type = Integer.parseInt( request.getParameter("type") );
+		int value = 0;
+		if ( request.getParameter("value") != null) {
+			value =  Integer.parseInt(request.getParameter("value"));
+		}
+		
+		JSONArray jsonArray 
+			= ProductDao.getProductDao().getchart( type, value );
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
-		response.getWriter().print(jsonArray);
-		
+				response.getWriter().print( jsonArray );
 		
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

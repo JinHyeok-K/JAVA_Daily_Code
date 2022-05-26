@@ -37,6 +37,7 @@ public class rereplywrite extends HttpServlet {
 		int rindex = Integer.parseInt( request.getParameter("rno") ); // rindex : 어떤 댓글의 대댓글인 식별번호 ( 부모 댓글번호 ) 
 		int bno = Integer.parseInt(  request.getParameter("bno") ) ;	
 		String rcontent = request.getParameter("rrcontent");
+		System.err.println(rcontent);
 			String mid = (String)request.getSession().getAttribute("login");
 		int mno = MemberDao.getmemberDao().getmno(mid);
 		// 객체화 ( 댓글번호 , 작성일 , mid 제외 )

@@ -26,7 +26,7 @@
 			<li><button onclick="#">주문 현황</button></li>
 			<li><button onclick="#">주문 배송</button></li>
 			<li><button onclick="pagechange('productsales')">매출 관리</button></li>
-			<li><a href="/jspweb/main.jsp">메인 홈페이지 이동</a> </li>
+			<li><a href="/jspweb/main.jsp">  메인 <br>홈페이지 이동</a> </li>
 			<li><a href="/jspweb/logout">로그 아웃</a> </li>
 		</ul>
 		<!-- side bar 열기/닫기 사용 -->
